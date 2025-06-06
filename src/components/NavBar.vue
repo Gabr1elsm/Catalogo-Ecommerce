@@ -19,7 +19,8 @@ const emit = defineEmits(['update:search'])
             <div class="flex space-x-4 px-4">
                 <div class="font-bold text-lg">Furniture</div>
                 <div class="font-bold text-lg">Food</div>
-                <div class="font-bold text-lg">Frangances</div>
+                <div class="font-bold text-lg">Fragrances</div>
+                <div class="font-bold text-lg">Beauty</div>
             </div>
         </div>
     </div>
