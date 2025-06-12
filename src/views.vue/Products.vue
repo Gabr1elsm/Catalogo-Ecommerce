@@ -1,18 +1,10 @@
 <template>
-  <div class="pt-20"> 
+  <div class="pt-20">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-3 p-3">
-
-      <div v-for="produto in paginatedProducts" :key="produto.id" class="border p-3 rounded-lg shadow-md flex flex-col items-center">
-        <h2 class="font-bold text-sm">{{ produto.title }}</h2>
-
-        <p class="text-gray-700">R$ {{ produto.price.toFixed(2) }}</p>
-
-        <p class="text-gray-500 text-sm">{{ produto.category }}</p>
-
-       <img :src="produto.thumbnail" :alt="produto.title" class="w-full h-32 sm:h-40 lg:h-48 object-cover mt-2 rounded">
-
-       <button class="bg-green-700 py-2 px-2 rounded-lg hover:bg-gray-400 text-white font-bold">Detalhes</button>
-      </div>
+      <ProductsCard
+        v-for="produto in paginatedProducts"
+        :key="produto.id"
+        :product="produto" @show-details="openProductDetails" />
     </div>
 
     <div class="flex justify-center mt-4 space-x-2">
@@ -21,16 +13,27 @@
         :disabled="currentPage === 1"
         class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:opacity-50"
       >
-        Anterior
+        <
       </button>
-      <span class="px-4 py-2">Página {{ currentPage }} de {{ totalPages }}</span>
+      <span class="px-4 py-2">Page {{ currentPage }} of {{ totalPages }}</span>
       <button
         @click="nextPage"
         :disabled="currentPage === totalPages"
         class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:opacity-50"
       >
-        Próximo
+        >
       </button>
+    </div>
+
+    <div v-if="showModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+      <div class="bg-white p-6 rounded-lg shadow-xl max-w-lg w-full relative">
+        <button @click="closeModal" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
+        <h3 class="text-2xl font-bold mb-4">{{ selectedProduct.title }}</h3>
+        <img :src="selectedProduct.thumbnail" :alt="selectedProduct.title" class="w-full h-64 object-contain mb-4 rounded">
+        <p class="text-gray-800 text-lg mb-2">R$ {{ selectedProduct.price.toFixed(2) }}</p>
+        <p class="text-gray-600 mb-4">{{ selectedProduct.description }}</p>
+        <p class="text-gray-500 text-sm">Category: {{ selectedProduct.category }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -38,20 +41,23 @@
 <script setup>
 import { ref, computed } from 'vue';
 import axios from 'axios';
+import ProductsCard from '../components/ProductsCard.vue'; // Certifique-se do caminho correto
 
 const result = ref({ products: [] });
 const currentPage = ref(1);
-const itemsPerPage = 5; 
+const itemsPerPage = 5;
 
+// Variáveis de estado para o modal
+const showModal = ref(false);
+const selectedProduct = ref(null);
 
 axios.get('https://dummyjson.com/products')
   .then(response => {
     result.value = response.data;
   })
   .catch(error => {
-    console.error("Erro ao buscar produtos:", error);
+    console.error("Error to locate products:", error);
   });
-
 
 const paginatedProducts = computed(() => {
   const start = (currentPage.value - 1) * itemsPerPage;
@@ -59,11 +65,9 @@ const paginatedProducts = computed(() => {
   return result.value.products.slice(start, end);
 });
 
-
 const totalPages = computed(() => {
   return Math.ceil(result.value.products.length / itemsPerPage);
 });
-
 
 const nextPage = () => {
   if (currentPage.value < totalPages.value) {
@@ -71,10 +75,20 @@ const nextPage = () => {
   }
 };
 
-
 const prevPage = () => {
   if (currentPage.value > 1) {
     currentPage.value--;
   }
+};
+
+// Funções para o modal
+const openProductDetails = (product) => {
+  selectedProduct.value = product;
+  showModal.value = true;
+};
+
+const closeModal = () => {
+  showModal.value = false;
+  selectedProduct.value = null;
 };
 </script>

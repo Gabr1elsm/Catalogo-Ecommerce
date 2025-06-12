@@ -10,18 +10,16 @@ const emit = defineEmits(['update:search'])
 </script>
 
 <template>
-    <div class="bg-blue-600 fixed top-0 w-full py-1 text-withe font-bold text-lg content-start ">
-        <h1>Catalog</h1>
-        <div class="">
-            <nav class="text-black px-4 py-2 flex justify-between items-center">
+    <div class="bg-blue-800 fixed top-0 w-full text-white font-bold ">
+        <h1 class="flex justify-start">Catalog</h1>
+            <nav class="text-black px-1 py-2 flex justify-center">
                 <SearchInput :modelValue="props.search" @update:modelValue="val => emit('update:search', val)"/>
             </nav>
-            <div class="flex space-x-4 px-4">
+            <div class="flex justify-start gap-2 text-white">
                 <div class="font-bold text-lg">Furniture</div>
                 <div class="font-bold text-lg">Food</div>
                 <div class="font-bold text-lg">Fragrances</div>
                 <div class="font-bold text-lg">Beauty</div>
-            </div>
         </div>
     </div>
 </template>
