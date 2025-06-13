@@ -1,16 +1,25 @@
 <script setup>
+import { ref } from 'vue'
 import NavBar from './components/NavBar.vue'
 import Footer from './components/Footer.vue'
-import Products from './views.vue/Products.vue';
+import Products from './views.vue/Products.vue'
+
+const search = ref('')
+const selectedCategory = ref('')
+
+const updateSearch = (val) => {
+  search.value = val
+}
+
+const updateCategory = (category) => {
+  selectedCategory.value = category
+}
 </script>
 
 <template>
-    <Products/>
-    <div class="flex flex-col min-h">
-        <NavBar />
-    <div class="main-container mx-auto px-4 py-6">
-        <router-view></router-view>
-    </div>
+  <NavBar :search="search" @update:search="updateSearch" @filter-category="updateCategory" />
+  <div class="flex flex-col min-h-screen pt-32">
+    <Products :search="search" :category="selectedCategory" />
     <Footer />
-    </div>
+  </div>
 </template>

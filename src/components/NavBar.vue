@@ -1,25 +1,30 @@
 <script setup>
-import { defineProps, defineEmits } from 'vue';
+import { defineEmits, defineProps } from 'vue'
 import SearchInput from 'vue-search-input'
 
 const props = defineProps({
-    search: String
+  search: String,
 })
 
-const emit = defineEmits(['update:search'])
+const emit = defineEmits(['update:search', 'filter-category'])
+
+const filterByCategory = (category) => {
+  emit('filter-category', category)
+}
 </script>
 
 <template>
-    <div class="bg-blue-800 fixed top-0 w-full text-white font-bold ">
-        <h1 class="flex justify-start">Catalog</h1>
-            <nav class="text-black px-1 py-2 flex justify-center">
-                <SearchInput :modelValue="props.search" @update:modelValue="val => emit('update:search', val)"/>
-            </nav>
-            <div class="flex justify-start gap-2 text-white">
-                <div class="font-bold text-lg">Furniture</div>
-                <div class="font-bold text-lg">Food</div>
-                <div class="font-bold text-lg">Fragrances</div>
-                <div class="font-bold text-lg">Beauty</div>
-        </div>
+  <div class="bg-blue-800 fixed top-0 w-full text-white font-bold z-10">
+    <h1 class="p-2">Catalog</h1>
+    <nav class="text-black px-1 py-2 flex justify-center">
+      <SearchInput :modelValue="props.search" @update:modelValue="val => emit('update:search', val)" />
+    </nav>
+    <div class="flex justify-center gap-4 text-white py-2">
+      <button @click="filterByCategory('furniture')" class="text-lg">Furniture</button>
+      <button @click="filterByCategory('groceries')" class="text-lg">Groceries</button>
+      <button @click="filterByCategory('fragrances')" class="text-lg">Fragrances</button>
+      <button @click="filterByCategory('skincare')" class="text-lg">Skin care</button>
+      <button @click="filterByCategory('')" class="text-lg text-yellow-300">All</button>
     </div>
+  </div>
 </template>
