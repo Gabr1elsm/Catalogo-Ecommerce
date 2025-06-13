@@ -17,7 +17,7 @@
 <script setup>
 import { defineProps, defineEmits } from 'vue';
 
-// Define as props que este componente espera receber
+
 const props = defineProps({
   product: {
     type: Object,
@@ -25,10 +25,8 @@ const props = defineProps({
   }
 });
 
-// Define os eventos que este componente pode emitir
 const emit = defineEmits(['show-details']);
 
-// Função que será chamada ao clicar no botão, emitindo o evento
 const emitDetails = () => {
   emit('show-details', props.product);
 };
