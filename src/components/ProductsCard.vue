@@ -7,10 +7,7 @@
     </div>
     <button
       @click="emitDetails"
-      class="bg-green-700 py-1.5 px-3 rounded-md hover:bg-gray-400 text-white font-bold text-sm mt-auto"
-    >
-      Details
-    </button>
+      class="bg-green-700 py-1.5 px-3 rounded-md hover:bg-gray-400 text-white font-bold text-sm mt-auto">Details</button>
   </div>
 </template>
 

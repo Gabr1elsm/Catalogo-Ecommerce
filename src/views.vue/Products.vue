@@ -23,6 +23,7 @@
         <p class="text-gray-800 text-lg mb-2">R$ {{ selectedProduct.price.toFixed(2) }}</p>
         <p class="text-gray-600 mb-4">{{ selectedProduct.description }}</p>
         <p class="text-gray-500 text-sm">Category: {{ selectedProduct.category }}</p>
+       <p class="mt-2"><strong>Stock:</strong> {{ selectedProduct.stock }} units available</p>
       </div>
     </div>
   </div>
