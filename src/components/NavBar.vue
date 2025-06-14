@@ -20,11 +20,11 @@ const filterByCategory = (category) => {
       <SearchInput :modelValue="props.search" @update:modelValue="val => emit('update:search', val)" />
     </nav>
     <div class="flex justify-center gap-4 text-white py-2">
-      <button @click="filterByCategory('furniture')" class="text-lg">Furniture</button>
-      <button @click="filterByCategory('groceries')" class="text-lg">Groceries</button>
-      <button @click="filterByCategory('fragrances')" class="text-lg">Fragrances</button>
-      <button @click="filterByCategory('beauty')" class="text-lg">Beauty</button>
-      <button @click="filterByCategory('')" class="text-lg text-yellow-300">All</button>
+      <button @click="filterByCategory('furniture')" class="text-lg hover:text-yellow-400">Furniture</button>
+      <button @click="filterByCategory('groceries')" class="text-lg hover:text-yellow-400">Groceries</button>
+      <button @click="filterByCategory('fragrances')" class="text-lg hover:text-yellow-400">Fragrances</button>
+      <button @click="filterByCategory('beauty')" class="text-lg hover:text-yellow-400">Beauty</button>
+      <button @click="filterByCategory('')" class="text-lg hover:text-yellow-400">All</button>
     </div>
   </div>
 </template>
