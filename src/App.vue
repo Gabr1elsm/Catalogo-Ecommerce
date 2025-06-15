@@ -18,7 +18,7 @@ const updateCategory = (category) => {
 
 <template>
   <NavBar :search="search" @update:search="updateSearch" @filter-category="updateCategory" />
-  <div class="flex flex-col min-h-screen pt-32">
+  <div class="flex flex-col min-h-screen pt-32 bg-slate-100">
     <Products :search="search" :category="selectedCategory" />
     <Footer />
   </div>

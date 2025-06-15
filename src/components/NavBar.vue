@@ -14,17 +14,17 @@ const filterByCategory = (category) => {
 </script>
 
 <template>
-  <div class="bg-blue-800 fixed top-0 w-full text-white font-bold z-10">
-    <h1 class="fixed left-0 ">Catalog</h1>
+  <div class="sticky top-0 fixed w-full bg-blue-800 shadow-md text-white font-semibold z-10">
+    <h1 class="fixed left-0 font-semibold">Catalog</h1>
     <nav class="text-black px-1 py-2 flex justify-center">
       <SearchInput :modelValue="props.search" @update:modelValue="val => emit('update:search', val)" />
     </nav>
     <div class="flex justify-center gap-4 text-white py-2">
-      <button @click="filterByCategory('furniture')" class="text-lg hover:text-yellow-400">Furniture</button>
-      <button @click="filterByCategory('groceries')" class="text-lg hover:text-yellow-400">Groceries</button>
-      <button @click="filterByCategory('fragrances')" class="text-lg hover:text-yellow-400">Fragrances</button>
-      <button @click="filterByCategory('beauty')" class="text-lg hover:text-yellow-400">Beauty</button>
-      <button @click="filterByCategory('')" class="text-lg hover:text-yellow-400">All</button>
+      <button @click="filterByCategory('furniture')" class="text-lg hover:text-yellow-400 font-semibold">Furniture</button>
+      <button @click="filterByCategory('groceries')" class="text-lg hover:text-yellow-400 font-semibold">Groceries</button>
+      <button @click="filterByCategory('fragrances')" class="text-lg hover:text-yellow-400 font-semibold">Fragrances</button>
+      <button @click="filterByCategory('beauty')" class="text-lg hover:text-yellow-400 font-semibold">Beauty</button>
+      <button @click="filterByCategory('')" class="text-lg hover:text-yellow-400 font-semibold">All</button>
     </div>
   </div>
 </template>

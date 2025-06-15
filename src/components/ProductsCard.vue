@@ -1,5 +1,5 @@
 <template>
-  <div class="border p-3 rounded-lg shadow-md flex flex-col items-center justify-between text-center">
+  <div class="border p-3 rounded-lg shadow-md flex flex-col items-center justify-between text-center bg-white">
     <div class="w-full">
       <h2 class="font-bold text-base truncate">{{ product.title }}</h2>
       <p class="text-gray-700 text-sm">R$ {{ product.price.toFixed(2) }}</p>
