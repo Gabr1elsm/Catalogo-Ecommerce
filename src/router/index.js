@@ -4,13 +4,13 @@ import Products from '../views.vue/Products.vue'
 const routes = [
     {
         path: '/',
-        name: 'Products',
+        name: 'Home',
         component: 'Products'
     }
 ]
 const router = createRouter({
-    history: createWebHistory(import.meta.env.BASE_URL),
+    history: createWebHistory(),
     routes: [
     ]
-})
+});
 export default router

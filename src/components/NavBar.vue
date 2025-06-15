@@ -15,7 +15,7 @@ const filterByCategory = (category) => {
 
 <template>
   <div class="sticky top-0 fixed w-full bg-blue-800 shadow-md text-white font-semibold z-10">
-    <h1 class="fixed left-0 font-semibold">Catalog</h1>
+    <h1 class="fixed left-0 font-semibold text-lg">Catalog</h1>
     <nav class="text-black px-1 py-2 flex justify-center">
       <SearchInput :modelValue="props.search" @update:modelValue="val => emit('update:search', val)" />
     </nav>
