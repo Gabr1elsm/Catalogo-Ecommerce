@@ -10,9 +10,9 @@
     </div>
 
     <div class="flex justify-center mt-4 space-x-2">
-      <button @click="prevPage" :disabled="currentPage === 1" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:opacity-50">&lt;</button>
-      <span class="px-4 py-2">Page {{ currentPage }} of {{ totalPages }}</span>
-      <button @click="nextPage" :disabled="currentPage === totalPages" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:opacity-50">&gt;</button>
+      <button @click="prevPage" :disabled="currentPage === 1" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:opacity-50"><-</button>
+      <span class="px-4 py-2 font-semibold">Page {{ currentPage }} of {{ totalPages }}</span>
+      <button @click="nextPage" :disabled="currentPage === totalPages" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:opacity-50">-></button>
     </div>
     
     <div v-if="showModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
@@ -22,8 +22,8 @@
         <img :src="selectedProduct.thumbnail" :alt="selectedProduct.title" class="w-full h-64 object-contain mb-4 rounded" />
         <p class="text-gray-800 font-semibold text-lg mb-2">R$ {{ selectedProduct.price.toFixed(2) }}</p>
         <p class="text-gray-600 font-semibold mb-4">{{ selectedProduct.description }}</p>
-        <p class="text-gray-500 font-semibold text-sm">Category: {{ selectedProduct.category }}</p>
-       <p class="mt-2 font-semibold"><strong>Stock:</strong> {{ selectedProduct.stock }} units available</p>
+        <p class="text-gray-500 font-semibold text-sm ">Category: {{ selectedProduct.category }}</p>
+       <p class="mt-2 font-semibold"><strong>Stock:</strong> {{ selectedProduct.stock }} unit(s) available</p>
       </div>
 
     </div>
