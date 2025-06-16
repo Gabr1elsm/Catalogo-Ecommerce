@@ -53,7 +53,7 @@ axios.get('https://dummyjson.com/products')
     result.value.products = response.data.products
   })
   .catch(error => {
-    console.error("Erro ao carregar os produtos:", error)
+    console.error("Error to load products:", error)
   })
 
 const filteredProducts = computed(() => {
